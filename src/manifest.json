@@ -1,0 +1,45 @@
+{
+  "name": "DeepEcom - Chrome Extension",
+  "permissions": [
+    "webNavigation",
+    "tabs",
+    "webRequest",
+    "activeTab",
+    "cookies",
+    "scripting",
+    "alarms",
+    "idle",
+    "storage",
+    "management",
+    "nativeMessaging",
+    "identity",
+    "identity.email"
+  ],
+  "background": {
+    "service_worker":"background.js"  
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-34.png"
+  },
+  "host_permissions": [
+    "*://*.meesho.com/",
+    "*://*.seller.jiomart.com/",
+    "*://*.seller.flipkart.com/"
+  ],
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:5000/","*://*.seller.flipkart.com/"],
+      "js": ["contentScript.js"],
+      "css": ["content.styles.css"],
+      "all_frames": true
+    }
+  ],
+  "externally_connectable": {
+    "id": ["gdhglmebcfpdjbikolkanlhoambjdloi"],
+    "matches": ["http://localhost:5000/"]
+  }
+}
+
+
